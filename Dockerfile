@@ -1,6 +1,5 @@
-# use a slime Python Image
-
-FROM python:3.10-slim # slim is a smaller image for faster download used for production
+# use a slim Python image (smaller, faster for production)
+FROM python:3.10-slim
 
 # set the working directory in the container
 WORKDIR /app
