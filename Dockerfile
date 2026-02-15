@@ -11,8 +11,9 @@ COPY requirements.txt .
 # install the dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# copy the rest of the application code into the container
-COPY app/ .
+# copy the application and artifacts (model + config)
+COPY app/ ./app/
+COPY artifacts/ ./artifacts/
 
 # expose the port 8000
 EXPOSE 8000

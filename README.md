@@ -140,8 +140,6 @@ docker run -p 8000:8000 credit-card-api
 
 Then call **http://localhost:8000/** and **http://localhost:8000/predict** as above.
 
-**Note:** The Dockerfile must copy both `app/` and `artifacts/` so the container has the model and config. If your Dockerfile only copies `app/`, add `COPY artifacts/ ./artifacts/` and use `COPY app/ ./app/` so the `app` package and artifacts are available at runtime.
-
 ---
 
 ## License
