@@ -1,0 +1,1 @@
+{"input_dim": 23, "hidden_dim": 12, "num_classes": 2, "model_path": "./artifacts/model.pth"}

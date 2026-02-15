@@ -1,0 +1,41 @@
+
+
+
+Pydantic is basically a “data gatekeeper” for Python apps: it validates, parses, and documents your data using normal Python type hints.
+
+Why people use Pydantic (the practical reasons)
+1) Stop bad data early (validation)
+
+If your API expects 23 floats and someone sends 22, or a string, or null, you want a clean error before your code crashes later.
+
+In your model:
+
+features: list[float] → must be a list, and items must be floats (or coercible to floats)
+
+min_length=23, max_length=23 → must be exactly 23 items
+
+So features=[1,2,"3"] becomes [1.0, 2.0, 3.0] (by default), but features=[1,2] fails with a structured error.
+
+2) Parse/convert inputs (“data coercion”)
+
+APIs often receive strings, JSON numbers, etc. Pydantic can convert compatible types automatically.
+
+Example: "0.72" can become 0.72 if the field is float (unless you tell it to be strict).
+
+3) Make your code self-documenting
+
+Those description="..." fields aren’t just comments—frameworks like FastAPI use them to generate OpenAPI/Swagger docs automatically.
+
+4) A single source of truth for your schema
+
+Your request/response shape lives in one place (your BaseModel classes). That means:
+
+consistent validation
+
+consistent serialization (e.g., model_dump())
+
+consistent docs
+
+5) Cleaner boundaries in bigger systems
+
+When data flows between layers (API → service → ML model → DB), Pydantic helps you enforce contracts so you don’t pass “almost-right” data around.
